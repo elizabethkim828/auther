@@ -1,15 +1,16 @@
 <div class="signin-container">
   <div class="buffer local">
-    <form>
+    <form name="signupForm" ng-submit="process(email, password)" ng-class="{ 'has-error' : signupForm.$invalid && signupForm.$dirty }">
       <div class="form-group">
         <label>email</label>
-        <input type="text" class="form-control" required />
+        <input type="text" ng-model="email" class="form-control" required />
       </div>
       <div class="form-group">
         <label>password</label>
-        <input type="password" class="form-control" required />
+        <input type="password" ng-model="password" class="form-control" required />
       </div>
-      <button type="submit" class="btn btn-block btn-primary">signup</button>
+      <button type="submit" class="btn btn-block btn-primary">{{ buttonName }}</button>
+      <span class="help-block" ng-show="signupForm.$invalid && signupForm.$submitted">User already exists.</span>
     </form>
   </div>
   <div class="or buffer">

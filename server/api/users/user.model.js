@@ -19,7 +19,10 @@ var User = db.define('user', {
       isEmail: true
     }
   },
-  password: Sequelize.STRING,
+  password: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
   isAdmin: {
     type: Sequelize.BOOLEAN,
     defaultValue: false

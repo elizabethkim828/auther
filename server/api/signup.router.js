@@ -4,22 +4,15 @@ var router = require('express').Router();
 
 var HttpError = require('../utils/HttpError');
 var User = require('./users/user.model');
+var Story = require('./stories/story.model');
 
 router.post('/', function (req, res, next) {
-  console.log('in login router');
-  console.log(req.body);
-  User.findOne({
-    where: req.body
-  })
+  User.create(req.body)
   .then(function (user) {
-    if (!user) {
-      res.sendStatus(401);
-    } else {
-      req.session.user = user;
-      res.json(user);
-    }
+    req.session.user = user;
+    res.json(user);
   })
-  .catch(next);
+  .catch(next)
 });
 
 module.exports = router;
