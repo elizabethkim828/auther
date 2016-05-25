@@ -15,8 +15,11 @@ router.post('/', function (req, res, next) {
     if (!user) {
       res.sendStatus(401);
     } else {
-      req.session.userId = user.id;
-      res.json(user);
+      // triggers serialization via passport
+      req.login(user, function(err) {
+        if (err) next();
+        else res.json(user);
+      })
     }
   })
   .catch(next);

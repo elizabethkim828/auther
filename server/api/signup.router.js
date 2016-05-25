@@ -9,8 +9,11 @@ var Story = require('./stories/story.model');
 router.post('/', function (req, res, next) {
   User.create(req.body)
   .then(function (user) {
-    req.session.userId = user.id;
-    res.json(user);
+  	// triggers serialization via passport
+    req.login(user, function(err) {
+	    if (err) next();
+	    else res.json(user);
+	})
   })
   .catch(next)
 });

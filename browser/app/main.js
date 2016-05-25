@@ -12,11 +12,9 @@ app.config(function ($urlRouterProvider, $locationProvider, $routeProvider) {
 });
 
 app.run(function($rootScope, AuthFactory, $log) {
-	$rootScope.$on('$stateChangeStart', function(event, next, current) {
-		AuthFactory.getCurrentUser().then(function(user) {
-			if (user) {
-				$rootScope.currentUser = user;
-			}
-		}).catch($log.error);
-	})
+	AuthFactory.getCurrentUser().then(function(user) {
+		if (user) {
+			$rootScope.currentUser = user;
+		}
+	}).catch($log.error);
 })

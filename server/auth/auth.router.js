@@ -6,9 +6,7 @@ var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 var User = require('../api/users/user.model');
 
 router.get('/me', function (req, res, next) {
-	User.findById(req.session.userId).then(function(user) {
-		res.json(user);
-	}).catch(next);
+	res.json(req.user)
 });
 
 router.get('/google', passport.authenticate('google', { scope : 'email' })); // route for when user clicks on "sign in through Google"; "scope" here is permission scope (not angular) for what we are allowed to access from user info
@@ -18,8 +16,7 @@ router.get('/google/callback',  // route for Google to redirect user back to our
 		failureRedirect : '/login' // or wherever
 	}),
 	function(req, res, next) {
-		req.session.user = req.user;
-		res.redirect('/users/'+req.session.user.id)
+		res.redirect('/users/'+req.user.id)
 	}
 );
 
