@@ -9,8 +9,8 @@ app.use(require('./logging.middleware'));
 
 app.use(require('./session.middleware'));
 
-app.use(passport.initialize());
-app.use(passport.session());
+app.use(passport.initialize()); // this adds things to the req object such as req.login, etc.
+app.use(passport.session()); // this is where deserialization occurs and req.user gets defined
 
 app.use(require('./request-state.middleware'));
 

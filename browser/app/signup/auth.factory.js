@@ -1,6 +1,6 @@
 'use strict';
 
-app.factory('AuthFactory', function ($http, $log) {
+app.factory('AuthFactory', function ($http, $log, $rootScope) {
 	return {
 		createUser: function (email, password) {
 			return $http.post('/api/signup', {email: email, password: password}).then(function(res) {

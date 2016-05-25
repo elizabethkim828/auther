@@ -11,8 +11,9 @@ app.config(function ($stateProvider) {
 app.config(function ($stateProvider) {
   $stateProvider.state('logout', {
     url: '/logout',
-    controller: function($http, $state) {
+    controller: function($http, $state, $rootScope) {
     	$http.get('/api/logout').then(function() {
+        $rootScope.currentUser = null;
     		$state.go('login')
     	})
     }

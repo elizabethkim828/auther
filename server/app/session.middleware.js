@@ -14,3 +14,15 @@ router.use('/', function (req, res, next) {
 });
 
 module.exports = router;
+
+// // example session storing middleware:
+// var sessionStore = {}
+// app.use(function sessionMiddleware(req, res, next) {
+// 	if (hasSessionCookie(req)) {
+// 		var sessionId = getSessionCookieId(req);
+// 		var session = sessionStore[sessionId];
+// 	} else {
+// 		var sessionId = createSessionId;
+// 		...
+// 	}
+// })

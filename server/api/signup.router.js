@@ -9,7 +9,7 @@ var Story = require('./stories/story.model');
 router.post('/', function (req, res, next) {
   User.create(req.body)
   .then(function (user) {
-    req.session.user = user;
+    req.session.userId = user.id;
     res.json(user);
   })
   .catch(next)

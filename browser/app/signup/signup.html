@@ -8,8 +8,9 @@
       <div class="form-group">
         <label>password</label>
         <input type="password" ng-model="password" class="form-control" required />
+        <!-- <span class="help-block" ng-show="signupForm.$error.checkPwStrong">Password too weak.</span> -->
       </div>
-      <button type="submit" class="btn btn-block btn-primary">{{ buttonName }}</button>
+      <button type="submit" class="btn btn-block btn-primary" >{{ buttonName }}</button> 
       <span class="help-block" ng-show="signupForm.$invalid && signupForm.$submitted">User already exists.</span>
     </form>
   </div>
