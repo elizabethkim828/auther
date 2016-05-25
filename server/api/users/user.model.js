@@ -20,13 +20,13 @@ var User = db.define('user', {
     }
   },
   password: {
-    type: Sequelize.STRING,
-    allowNull: false,
+    type: Sequelize.STRING
   },
   isAdmin: {
     type: Sequelize.BOOLEAN,
     defaultValue: false
-  }
+  },
+  googleId: Sequelize.STRING
 });
 
 module.exports = User;

@@ -10,7 +10,6 @@ router.use('/', function (req, res, next) {
   if (!req.session.counter) req.session.counter = 0;
   req.session.cookie.maxAge = 600000; //10 minutes
   req.session.cookie.rolling = true;
-  console.log(req.session)
   next();
 });
 

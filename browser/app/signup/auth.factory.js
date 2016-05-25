@@ -18,6 +18,19 @@ app.factory('AuthFactory', function ($http, $log) {
 					console.log('user not found')
 				}
 			})
+		},
+
+		getCurrentUser: function() {
+			return $http.get('/auth/me').then(function(res) {
+				return res.data;
+			})
 		}
+
+		// setCurrentUser: function() {
+		// 	return $http.get('/api/me').then(function(res) {
+		// 		$rootScope.currentUser = res.data;
+		// 		return res.data;
+		// 	})
+		// }
 	}
 });
